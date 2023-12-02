@@ -23,3 +23,11 @@ Content-Type: application/json
 ### 200 []
 
 GET http://localhost:5000/contacts?page=1&results=8
+
+### 200 {}
+
+GET http://localhost:5000/contacts/5 HTTP/1.1
+
+### 404 Contacts Not Found
+
+GET http://localhost:5000/contacts/1000 HTTP/1.1

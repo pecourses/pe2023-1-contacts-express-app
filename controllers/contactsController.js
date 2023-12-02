@@ -16,7 +16,17 @@ module.exports.getContacts = (req, res) => {
   res.status(200).send(foundContacts);
 };
 
-module.exports.getContactById = (req, res) => {};
+module.exports.getContactById = (req, res) => {
+  const { id } = req.params;
+
+  const foundContact = Contact.getContactById(id);
+
+  if (!foundContact) {
+    return res.status(404).send('Contacts Not Found');
+  }
+
+  res.status(200).send(foundContact);
+};
 
 module.exports.updateContactById = (req, res) => {};
 
