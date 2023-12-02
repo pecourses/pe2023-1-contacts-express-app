@@ -13,7 +13,6 @@ const app = express();
 app.use(express.json());
 
 app.post('/contacts', validateContactOnCreate, createContact);
-
 app.get('/contacts', getContacts);
 app.get('/contacts/:id', getContactById);
 app.patch('/contacts/:id', updateContactById);
@@ -42,7 +41,7 @@ app.get(
 //   console.log(req.params.id);
 //   console.log(req.query);
 // });
-// // GET http://localhost:5000/notebooks?brand=apple&color=gold
+// GET http://localhost:5000/notebooks?brand=apple&color=gold
 // // отримати з запиту: назву сутності, колір і назву бренду
 
 // app.get('/:entity', (req, res) => {

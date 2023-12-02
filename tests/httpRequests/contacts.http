@@ -19,3 +19,7 @@ Content-Type: application/json
     "telNumber": "+380123456780",
     "birthday": "1990-12-01"
 }
+
+### 200 []
+
+GET http://localhost:5000/contacts?page=1&results=8

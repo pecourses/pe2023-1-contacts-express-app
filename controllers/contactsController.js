@@ -9,7 +9,11 @@ module.exports.createContact = async (req, res) => {
 };
 
 module.exports.getContacts = (req, res) => {
-  res.status(200).send('result');
+  const { page = 1, results = 10 } = req.query;
+
+  const foundContacts = Contact.getContacts(page, results);
+
+  res.status(200).send(foundContacts);
 };
 
 module.exports.getContactById = (req, res) => {};
