@@ -1,8 +1,21 @@
+### 201 {}
+
 POST  http://localhost:5000/contacts
 Content-Type: application/json
 
 {
     "name": "Test",
+    "telNumber": "+380123456780",
+    "birthday": "1990-12-01"
+}
+
+### 422 Validation Error
+
+POST  http://localhost:5000/contacts
+Content-Type: application/json
+
+{
+    "name": "1",
     "telNumber": "+380123456780",
     "birthday": "1990-12-01"
 }

@@ -1,6 +1,6 @@
 const Contact = require('./../models/contact');
 
-module.exports.createContact = (req, res) => {
+module.exports.createContact = async (req, res) => {
   const { body } = req;
 
   const createdContact = Contact.createContact(body);

@@ -6,18 +6,32 @@ const {
   updateContactById,
   deleteContactById,
 } = require('./controllers/contactsController');
+const { validateContactOnCreate } = require('./middleware/validationMw');
 
 const app = express();
 
 app.use(express.json());
 
-app.post('/contacts', createContact);
+app.post('/contacts', validateContactOnCreate, createContact);
+
 app.get('/contacts', getContacts);
 app.get('/contacts/:id', getContactById);
 app.patch('/contacts/:id', updateContactById);
 app.delete('/contacts/:id', deleteContactById);
 
 module.exports = app;
+
+app.get(
+  '/',
+  (req, res, next) => {
+    console.log('step 1 :>> ');
+    next();
+  },
+  (req, res) => {
+    console.log('step 2 :>> ');
+    res.status(200).send('result');
+  }
+);
 
 // // GET http://localhost:5000/users/5?results=10&page=2
 
