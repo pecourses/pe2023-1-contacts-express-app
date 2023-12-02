@@ -1,6 +1,6 @@
 ### 201 {}
 
-POST  http://localhost:5000/contacts
+POST http://localhost:5000/contacts
 Content-Type: application/json
 
 {
@@ -28,6 +28,32 @@ GET http://localhost:5000/contacts?page=1&results=8
 
 GET http://localhost:5000/contacts/5 HTTP/1.1
 
-### 404 Contacts Not Found
+### 404 Contact Not Found
 
 GET http://localhost:5000/contacts/1000 HTTP/1.1
+
+### 200 {}
+
+PATCH http://localhost:5000/contacts/1
+Content-Type: application/json
+
+{
+    "name": "NewName"
+}
+
+### 404 Contact Not Found
+
+PATCH http://localhost:5000/contacts/1000
+Content-Type: application/json
+
+{
+    "name": "NewName"
+}
+
+### 204 
+
+DELETE http://localhost:5000/contacts/1 HTTP/1.1
+
+### 404 Contact Not Found
+
+DELETE http://localhost:5000/contacts/1000 HTTP/1.1

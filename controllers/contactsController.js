@@ -28,6 +28,29 @@ module.exports.getContactById = (req, res) => {
   res.status(200).send(foundContact);
 };
 
-module.exports.updateContactById = (req, res) => {};
+module.exports.updateContactById = (req, res) => {
+  const {
+    body,
+    params: { id },
+  } = req;
 
-module.exports.deleteContactById = (req, res) => {};
+  const updatedContact = Contact.updateContact(id, body);
+
+  if (!updatedContact) {
+    return res.send(404).send('Contact Not Found');
+  }
+
+  res.status(200).send(updatedContact);
+};
+
+module.exports.deleteContactById = (req, res) => {
+  const { id } = req.params;
+
+  const deletedContact = Contact.deleteContact(id);
+
+  if (!deletedContact) {
+    return res.status(404).send('Contact Not Found');
+  }
+
+  res.status(204).send();
+};
