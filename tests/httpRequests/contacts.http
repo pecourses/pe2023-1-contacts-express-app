@@ -34,7 +34,7 @@ GET http://localhost:5000/contacts/1000 HTTP/1.1
 
 ### 200 {}
 
-PATCH http://localhost:5000/contacts/1
+PATCH http://localhost:5000/contacts/2
 Content-Type: application/json
 
 {
@@ -48,6 +48,15 @@ Content-Type: application/json
 
 {
     "name": "NewName"
+}
+
+### 422 Validation Error
+
+PATCH http://localhost:5000/contacts/1
+Content-Type: application/json
+
+{
+    "name": "N"
 }
 
 ### 204 

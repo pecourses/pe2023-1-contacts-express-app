@@ -6,7 +6,10 @@ const {
   updateContactById,
   deleteContactById,
 } = require('./controllers/contactsController');
-const { validateContactOnCreate } = require('./middleware/validationMw');
+const {
+  validateContactOnCreate,
+  validateContactOnUpdate,
+} = require('./middleware/validationMw');
 
 const app = express();
 
@@ -15,7 +18,7 @@ app.use(express.json());
 app.post('/contacts', validateContactOnCreate, createContact);
 app.get('/contacts', getContacts);
 app.get('/contacts/:id', getContactById);
-app.patch('/contacts/:id', updateContactById);
+app.patch('/contacts/:id', validateContactOnUpdate, updateContactById);
 app.delete('/contacts/:id', deleteContactById);
 
 module.exports = app;

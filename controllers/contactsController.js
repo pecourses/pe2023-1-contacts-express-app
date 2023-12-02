@@ -37,7 +37,7 @@ module.exports.updateContactById = (req, res) => {
   const updatedContact = Contact.updateContact(id, body);
 
   if (!updatedContact) {
-    return res.send(404).send('Contact Not Found');
+    return res.status(404).send('Contact Not Found');
   }
 
   res.status(200).send(updatedContact);
