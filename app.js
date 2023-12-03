@@ -12,7 +12,10 @@ const {
   validateContactOnUpdate,
 } = require('./middleware/validationMw');
 
-const { errorHandler } = require('./middleware/errorHandlers');
+const {
+  errorHandler,
+  validationErrorHandler,
+} = require('./middleware/errorHandlers');
 
 const app = express();
 
@@ -24,6 +27,6 @@ app.get('/contacts/:id', getContactById);
 app.patch('/contacts/:id', validateContactOnUpdate, updateContactById);
 app.delete('/contacts/:id', deleteContactById);
 
-app.use(errorHandler);
+app.use(validationErrorHandler, errorHandler);
 
 module.exports = app;
